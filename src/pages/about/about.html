@@ -1,11 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
+  <ion-navbar color="danger">
+    <ion-title>Mesas Reservadas</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+      <button ion-item *ngFor="let table of tables" (click)="itemTapped($event, table)">
+        {{table.label}}
+      </button>
+  </ion-list>
 </ion-content>
