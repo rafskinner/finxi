@@ -20,7 +20,7 @@ export class MyApp {
     {id: 5, label: "Mesa 5", available: true, order: ""},
     {id: 6, label: "Mesa 6", available: true, order: ""},
     {id: 7, label: "Mesa 7", available: true, order: ""},
-    {id: 8, label: "Mesa 8", available: true, order: ""}
+    {id: 8, label: "Mesa 8", available: false, order: ""}
   ];
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage: Storage) {

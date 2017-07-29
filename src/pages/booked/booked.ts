@@ -13,8 +13,8 @@ export class BookedPage {
 
   constructor(public navCtrl: NavController, private storage: Storage) {
     storage.get('tables').then((data) => {
-        this.tables = data;
-      });
+      this.tables = data.filter(obj => obj.available === false);      
+    });
   }
 
   itemTapped($event, table) {
