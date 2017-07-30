@@ -9,17 +9,17 @@ import { Storage } from "@ionic/storage";
 })
 export class AvailablePage {
   
-  private stg: any;
+  // private stg: any;
   private allTables: any;
   tables = [];
 
   constructor(public navCtrl: NavController, private storage: Storage) {
-    this.stg = storage;
+    // this.stg = storage;
 
   }
 
   ionViewWillEnter() {
-    this.stg.get('tables').then((data) => {
+    this.storage.get('tables').then((data) => {
       this.allTables = data;
       this.tables = data.filter(obj => obj.available === true);      
     });

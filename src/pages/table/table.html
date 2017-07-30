@@ -8,5 +8,11 @@
 
 
 <ion-content padding>
-
+  <form (ngSubmit)="saveOrder()">
+      <ion-item>
+        <ion-label>Pedido:</ion-label>
+        <ion-textarea [(ngModel)]="table.order" name="order"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>Salvar Pedido</button>
+    </form>
 </ion-content>
