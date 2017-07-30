@@ -9,10 +9,11 @@
 
 <ion-content padding>
   <form (ngSubmit)="saveOrder()">
-      <ion-item>
-        <ion-label>Pedido:</ion-label>
-        <ion-textarea [(ngModel)]="table.order" name="order"></ion-textarea>
-      </ion-item>
-      <button ion-button type="submit" block>Salvar Pedido</button>
-    </form>
+    <ion-item>
+      <ion-label>Pedido:</ion-label>
+      <ion-textarea [(ngModel)]="table.order" name="order"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block>Realizar Pedido</button>
+  </form>
+  <button ion-button color="secondary" type="button" (click)="itemTapped($event, table)">Liberar Mesa</button>
 </ion-content>
