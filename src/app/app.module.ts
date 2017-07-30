@@ -4,19 +4,20 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { BookedPage } from '../pages/booked/booked';
-import { ContactPage } from '../pages/contact/contact';
+import { TablePage } from '../pages/table/table';
 import { AvailablePage } from '../pages/available/available';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from "@ionic/storage";
+// import { SuperTabsModule } from "ionic2-super-tabs";
 
 @NgModule({
   declarations: [
     MyApp,
     BookedPage,
-    ContactPage,
+    TablePage,
     AvailablePage,
     TabsPage
   ],
@@ -24,12 +25,13 @@ import { IonicStorageModule } from "@ionic/storage";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
+    // SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     BookedPage,
-    ContactPage,
+    TablePage,
     AvailablePage,
     TabsPage
   ],
