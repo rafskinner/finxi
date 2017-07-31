@@ -13,7 +13,16 @@
       <ion-label>Pedido:</ion-label>
       <ion-textarea [(ngModel)]="table.order" name="order"></ion-textarea>
     </ion-item>
-    <button ion-button type="submit" block>Realizar Pedido</button>
+    <button ion-button icon-start outline type="submit" block>
+      <ion-icon name="restaurant"></ion-icon>
+      Realizar Pedido</button>
   </form>
-  <button ion-button color="secondary" type="button" (click)="itemTapped($event, table)">Liberar Mesa</button>
 </ion-content>
+
+<ion-footer no-border no-shadow>
+	<ion-toolbar position="bottom">
+    <button ion-button icon-start block color="secondary" (click)="itemTapped($event, table)">
+    <ion-icon name="checkmark"></ion-icon>
+    Liberar Mesa</button>
+	</ion-toolbar>
+</ion-footer>

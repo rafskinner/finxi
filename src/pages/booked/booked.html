@@ -6,8 +6,9 @@
 
 <ion-content padding>
   <ion-list>
-      <button ion-item *ngFor="let table of tables" (click)="itemTapped($event, table)">
+      <button ion-item icon-end *ngFor="let table of tables" class ="button icon icon-right ion-restaurant" (click)="itemTapped($event, table)">
         {{table.label}}
+        <ion-icon name="restaurant" *ngIf="table.order"></ion-icon>
       </button>
   </ion-list>
 </ion-content>
