@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 
 import { Storage } from "@ionic/storage";
 
@@ -13,7 +13,7 @@ export class AvailablePage {
   private allTables: any;
   tables = [];
 
-  constructor(public navCtrl: NavController, private storage: Storage) {
+  constructor(public navCtrl: NavController, private storage: Storage, private loadingCtrl: LoadingController) {
     // this.stg = storage;
 
   }
@@ -25,7 +25,20 @@ export class AvailablePage {
     });
   }
 
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      content: 'Reservando Mesa...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1000);
+  }
+
   itemTapped($event, table) {
+    this.presentLoadingDefault();
 
     let updatedTables = this.allTables.map(obj => {
       if (obj.id === table.id) {
