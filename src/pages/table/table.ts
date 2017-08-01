@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { Storage } from "@ionic/storage";
 
@@ -12,7 +12,7 @@ export class TablePage {
   private allTables: any;
   table: any;
 
-  constructor(public navCtrl: NavController, public navPrms: NavParams, private storage: Storage, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navPrms: NavParams, private storage: Storage, public toastCtrl: ToastController) {
     this.table = this.navPrms.data;
   }
 
@@ -22,36 +22,39 @@ export class TablePage {
     });
   }
 
-  presentLoadingDefault(texto) {
-    let loading = this.loadingCtrl.create({
-      content: texto
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: "top",
+      showCloseButton: true,
+      closeButtonText: "X"
     });
-
-    loading.present();
-
-    setTimeout(() => {
-      loading.dismiss();
-    }, 1000);
+    toast.present();
   }
 
   saveOrder() {
-    let texto = "Realizando pedido...";
-    this.presentLoadingDefault(texto);
+    let msg = "Pedido Realizado.";
+    this.presentToast(msg);
 
     let updatedTables = this.allTables.map(obj => {
       if (obj.id === this.table.id) {
         obj.order = this.table.order;
+        if (this.table.order !== "") {
+          
+        }
       }
       return obj;
     });
-    
+
     this.allTables = updatedTables;
     this.storage.set('tables', this.allTables);
+    this.navCtrl.pop();
   }
 
   itemTapped($event, table) {
-    let texto = "Liberando Mesa...";
-    this.presentLoadingDefault(texto);
+    let msg = table.label + " Liberada.";
+    this.presentToast(msg);
 
     let updatedTables = this.allTables.map(obj => {
       if (obj.id === this.table.id) {

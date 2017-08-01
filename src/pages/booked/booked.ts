@@ -10,12 +10,10 @@ import { TablePage } from "../table/table";
 })
 export class BookedPage {
 
-  // private stg: any;
   private allTables: any;
   tables = [];
 
   constructor(public navCtrl: NavController, private storage: Storage) {
-    // this.stg = storage;
     
   }
 
@@ -28,9 +26,6 @@ export class BookedPage {
 
   itemTapped($event, table) {
     this.navCtrl.push(TablePage, table);
-    // let tappedTable = this.tables.find(obj => obj.id === table.id);
-    // tappedTable.available = true;
-    // console.log("liberando", tappedTable);
   }
 
 }

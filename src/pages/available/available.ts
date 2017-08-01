@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import { Storage } from "@ionic/storage";
 
@@ -9,12 +9,10 @@ import { Storage } from "@ionic/storage";
 })
 export class AvailablePage {
   
-  // private stg: any;
   private allTables: any;
   tables = [];
 
-  constructor(public navCtrl: NavController, private storage: Storage, private loadingCtrl: LoadingController) {
-    // this.stg = storage;
+  constructor(public navCtrl: NavController, private storage: Storage, private toastCtrl: ToastController) {
 
   }
 
@@ -25,20 +23,19 @@ export class AvailablePage {
     });
   }
 
-  presentLoadingDefault() {
-    let loading = this.loadingCtrl.create({
-      content: 'Reservando Mesa...'
+  presentToast(table) {
+    let toast = this.toastCtrl.create({
+      message: table.label + " Reservada.",
+      duration: 2000,
+      position: "top",
+      showCloseButton: true,
+      closeButtonText: "X"
     });
-
-    loading.present();
-
-    setTimeout(() => {
-      loading.dismiss();
-    }, 1000);
+    toast.present();
   }
 
   itemTapped($event, table) {
-    this.presentLoadingDefault();
+    this.presentToast(table);
 
     let updatedTables = this.allTables.map(obj => {
       if (obj.id === table.id) {
