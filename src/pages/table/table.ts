@@ -29,27 +29,27 @@ export class TablePage {
       position: "top",
       showCloseButton: true,
       closeButtonText: "X"
+
     });
     toast.present();
   }
 
   saveOrder() {
-    let msg = "Pedido Realizado.";
-    this.presentToast(msg);
-
+    
     let updatedTables = this.allTables.map(obj => {
       if (obj.id === this.table.id) {
-        obj.order = this.table.order;
-        if (this.table.order !== "") {
-          
+        if (this.table.order !== obj.order) {
+          let msg = "Pedido Realizado.";
+          this.presentToast(msg);
+          this.navCtrl.pop();
         }
+        obj.order = this.table.order;
       }
       return obj;
     });
 
     this.allTables = updatedTables;
     this.storage.set('tables', this.allTables);
-    this.navCtrl.pop();
   }
 
   itemTapped($event, table) {

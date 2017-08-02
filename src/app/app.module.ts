@@ -11,7 +11,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from "@ionic/storage";
-// import { SuperTabsModule } from "ionic2-super-tabs";
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { IonicStorageModule } from "@ionic/storage";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
-    // SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
