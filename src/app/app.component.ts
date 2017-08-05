@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   rootPage:any = TabsPage;
 
+  
   tables = [
     {id: 1, label: "Mesa 1", available: true, order: ""},
     {id: 2, label: "Mesa 2", available: true, order: ""},
@@ -30,8 +31,11 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      this.storage.set('tables', this.tables);
-
+      this.storage.get('tables').then((data) => {
+        if (data.length === 0) {
+          this.storage.set('tables', this.tables);
+        }
+      });
 
     });
   }
